@@ -23,7 +23,13 @@ def check_json(f, _dir):
 
 def __check_path__(path):
     """校验 指定目录 中的 json 文件"""
-    [ check_json(f, path) for f in os.listdir(path) ]
+    #[ check_json(f, path) for f in os.listdir(path) ]
+    print("start to check path")
+    for f in os.listdir(path):
+        if check_json(f, path):
+            print("File%s is verified"%(file))
+        else:
+            print("File%s fails to be verified"%(file))
 
 
 test_shi = functools.partial(__check_path__, './json')
@@ -33,4 +39,6 @@ test_ci = functools.partial(__check_path__, './ci')
 test_shijing = functools.partial(__check_path__, './shijing')
 
 test_lunyu = functools.partial(__check_path__, './lunyu')
+
+
 
